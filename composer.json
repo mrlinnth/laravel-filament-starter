@@ -41,7 +41,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Asirius\\": "Asirius/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
@@ -69,9 +68,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-                "filament/filament"
-            ]
+            "dont-discover": []
         }
     },
     "config": {
