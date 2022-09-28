@@ -7,7 +7,7 @@ use App\Models\Skill;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class HeroSeeder extends Seeder
+class SkillSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +16,9 @@ class HeroSeeder extends Seeder
      */
     public function run()
     {
-        Hero::factory()
-        ->has(Skill::factory()->count(3))
+        Skill::factory()
+        ->recycle(Hero::factory())
+        ->count(12)
         ->create();
     }
 }

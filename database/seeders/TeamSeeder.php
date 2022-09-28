@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Hero;
-use App\Models\Skill;
+use App\Models\Team;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class HeroSeeder extends Seeder
+class TeamSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +15,8 @@ class HeroSeeder extends Seeder
      */
     public function run()
     {
-        Hero::factory()
-        ->has(Skill::factory()->count(3))
+        Team::factory()
+        ->hasHeroes(7)
         ->create();
     }
 }
