@@ -23,7 +23,9 @@ class TeamResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\Select::make('leader_id')->relationship('leader', 'name'),
+                Forms\Components\RichEditor::make('story')->columnSpan('full'),
             ]);
     }
 
@@ -32,6 +34,7 @@ class TeamResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('leader.name'),
             ])
             ->filters([
                 //

@@ -44,6 +44,6 @@ class Hero extends Model
      */
     public function leaderTeams()
     {
-        return $this->hasMany(Team::class, 'leader');
+        return $this->hasMany(Team::class, 'leader_id');
     }
 }

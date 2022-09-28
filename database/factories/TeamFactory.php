@@ -20,7 +20,7 @@ class TeamFactory extends Factory
         return [
             'name' => fake()->word(),
             'story' => fake()->realText(),
-            'leader' => Hero::factory()
+            'leader_id' => Hero::factory()
         ];
     }
 }

@@ -16,7 +16,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('name');
             $table->text('story');
-            $table->foreignId('leader')
+            $table->foreignId('leader_id')
                     ->constrained('heroes')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');

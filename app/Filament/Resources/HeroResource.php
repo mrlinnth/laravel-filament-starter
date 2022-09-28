@@ -26,7 +26,6 @@ class HeroResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\Textarea::make('history'),
                 Forms\Components\Select::make('species')
                 ->options(SpeciesEnum::toArray()),
                 Forms\Components\Radio::make('gender')
@@ -35,10 +34,12 @@ class HeroResource extends Resource
                     'female' => 'Female',
                     'other' => 'Other'
                 ]),
-                Forms\Components\TextInput::make('age')->numeric(),
-                Forms\Components\ColorPicker::make('eye_color'),
                 Forms\Components\CheckboxList::make('traits')
                 ->options(TraitsEnum::toArray())
+                ->columns(2),
+                Forms\Components\TextInput::make('age')->numeric(),
+                Forms\Components\ColorPicker::make('eye_color'),
+                Forms\Components\Textarea::make('history')->columnSpan('full'),
             ]);
     }
 

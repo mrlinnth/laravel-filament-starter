@@ -22,6 +22,6 @@ class Team extends Model
      */
     public function leader()
     {
-        return $this->belongsTo(Hero::class, 'leader');
+        return $this->belongsTo(Hero::class, 'leader_id');
     }
 }
