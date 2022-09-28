@@ -1,3 +1,5 @@
+# Laravel with Filament and plugins
+
 ## Project Setup
 
 1. Install laravel
@@ -29,14 +31,14 @@
 
 1. Create sample migration files
 
--   heroes, skills, teams
--   hero has many skills, skill belongs to a hero (one to many)
--   hero belongs to many teams, team belongs to many heroes (many to many)
--   hero has many team, team belongs to a hero (as leader) (one to many)
+    - heroes, skills, teams
+    - hero has many skills, skill belongs to a hero (one to many)
+    - hero belongs to many teams, team belongs to many heroes (many to many)
+    - hero has many team, team belongs to a hero (as leader) (one to many)
 
 1. Create sample models
-2. Create sample filament resources
+1. Create sample filament resources
 
--   Hero - generate resource `php artisan make:filament-resource Hero --generate`
--   Skill - simple resource `php artisan make:filament-resource Skill --simple`
--   Team - default resource `php artisan make:filament-resource Team`
+    - Hero - generate resource `php artisan make:filament-resource Hero --generate`
+    - Skill - simple resource `php artisan make:filament-resource Skill --simple`
+    - Team - default resource `php artisan make:filament-resource Team`
