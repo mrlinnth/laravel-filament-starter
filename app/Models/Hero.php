@@ -9,6 +9,17 @@ class Hero extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'traits' => 'array'
+    ];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
     /**
      * Get the skills of the hero.
      */

@@ -23,7 +23,33 @@ class HeroResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\Textarea::make('history'),
+                Forms\Components\Select::make('species')
+                ->options([
+                    'human' => 'Human',
+                    'alien' => 'Alien',
+                    'robot' => 'Robot',
+                    'mutant' => 'Mutant',
+                    'god' => 'God',
+                ]),
+                Forms\Components\Radio::make('gender')
+                ->options([
+                    'male' => 'Male',
+                    'female' => 'Female',
+                    'other' => 'Other'
+                ]),
+                Forms\Components\TextInput::make('age')->numeric(),
+                Forms\Components\ColorPicker::make('eye_color'),
+                Forms\Components\CheckboxList::make('traits')
+                ->options([
+                    'intelligence' => 'Intelligence',
+                    'strength' => 'Strength',
+                    'speed' => 'Speed',
+                    'durability' => 'Durability',
+                    'power' => 'Power',
+                    'combat' => 'Combat',
+                ])
             ]);
     }
 
@@ -31,7 +57,10 @@ class HeroResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('species'),
+                Tables\Columns\TextColumn::make('gender'),
+                Tables\Columns\TextColumn::make('age'),
             ])
             ->filters([
                 //
@@ -43,14 +72,14 @@ class HeroResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +87,5 @@ class HeroResource extends Resource
             'create' => Pages\CreateHero::route('/create'),
             'edit' => Pages\EditHero::route('/{record}/edit'),
         ];
-    }    
+    }
 }
