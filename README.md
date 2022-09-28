@@ -42,3 +42,6 @@
     - Hero - generate resource `php artisan make:filament-resource Hero --generate`
     - Skill - simple resource `php artisan make:filament-resource Skill --simple`
     - Team - default resource `php artisan make:filament-resource Team`
+
+1. Create seeders and factories
+1. Use enum for species and traits
