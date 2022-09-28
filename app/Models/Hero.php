@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\SpeciesEnum;
+use App\Enums\TraitsEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +12,8 @@ class Hero extends Model
     use HasFactory;
 
     protected $casts = [
-        'traits' => 'array'
+        'species' => SpeciesEnum::class,
+        'traits' => TraitsEnum::class.':collection,nullable',
     ];
 
     /**
@@ -41,6 +44,6 @@ class Hero extends Model
      */
     public function leaderTeams()
     {
-        return $this->hasMany(Team::class, 'leader');
+        return $this->hasMany(Team::class, 'leader_id');
     }
 }

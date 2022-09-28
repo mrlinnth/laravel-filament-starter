@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\SpeciesEnum;
+use App\Enums\TraitsEnum;
 use App\Filament\Resources\HeroResource\Pages;
 use App\Filament\Resources\HeroResource\RelationManagers;
 use App\Models\Hero;
@@ -24,32 +26,20 @@ class HeroResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
-                Forms\Components\Textarea::make('history'),
                 Forms\Components\Select::make('species')
-                ->options([
-                    'human' => 'Human',
-                    'alien' => 'Alien',
-                    'robot' => 'Robot',
-                    'mutant' => 'Mutant',
-                    'god' => 'God',
-                ]),
+                ->options(SpeciesEnum::toArray()),
                 Forms\Components\Radio::make('gender')
                 ->options([
                     'male' => 'Male',
                     'female' => 'Female',
                     'other' => 'Other'
                 ]),
+                Forms\Components\CheckboxList::make('traits')
+                ->options(TraitsEnum::toArray())
+                ->columns(2),
                 Forms\Components\TextInput::make('age')->numeric(),
                 Forms\Components\ColorPicker::make('eye_color'),
-                Forms\Components\CheckboxList::make('traits')
-                ->options([
-                    'intelligence' => 'Intelligence',
-                    'strength' => 'Strength',
-                    'speed' => 'Speed',
-                    'durability' => 'Durability',
-                    'power' => 'Power',
-                    'combat' => 'Combat',
-                ])
+                Forms\Components\Textarea::make('history')->columnSpan('full'),
             ]);
     }
 

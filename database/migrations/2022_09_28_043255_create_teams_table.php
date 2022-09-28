@@ -15,8 +15,8 @@ return new class () extends Migration {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('story');
-            $table->foreignId('leader')
+            $table->text('story');
+            $table->foreignId('leader_id')
                     ->constrained('heroes')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
