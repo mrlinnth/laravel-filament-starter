@@ -9,6 +9,7 @@ use App\Filament\Resources\HeroResource\RelationManagers;
 use App\Models\Hero;
 use Filament\Forms;
 use Filament\Resources\Form;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
@@ -66,7 +67,7 @@ class HeroResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\SkillsRelationManager::class,
         ];
     }
 
