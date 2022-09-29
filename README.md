@@ -39,9 +39,11 @@
 1. Create sample models
 1. Create sample filament resources
 
-    - Hero - generate resource `php artisan make:filament-resource Hero --generate`
+    - Hero - default resource `php artisan make:filament-resource Hero`
     - Skill - simple resource `php artisan make:filament-resource Skill --simple`
-    - Team - default resource `php artisan make:filament-resource Team`
+    - Team - generate resource `php artisan make:filament-resource Team --generate`
 
 1. Create seeders and factories
 1. Use enum for species and traits
+1. Update team resource for heroes relationship
+1.

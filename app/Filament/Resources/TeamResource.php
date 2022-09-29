@@ -26,6 +26,8 @@ class TeamResource extends Resource
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\Select::make('leader_id')->relationship('leader', 'name'),
                 Forms\Components\RichEditor::make('story')->columnSpan('full'),
+                Forms\Components\MultiSelect::make('heroes')
+                ->relationship('heroes', 'name')
             ]);
     }
 
