@@ -48,13 +48,22 @@ class HeroResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('species'),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('species')->searchable(),
                 Tables\Columns\TextColumn::make('gender'),
-                Tables\Columns\TextColumn::make('age'),
+                Tables\Columns\TextColumn::make('age')->sortable()->toggleable(),
+                Tables\Columns\ColorColumn::make('eye_color')->toggleable(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('is_male')
+                ->label('Males')
+                ->query(fn (Builder $query): Builder => $query->where('gender', 'male')),
+                Tables\Filters\Filter::make('is_female')
+                ->label('Females')
+                ->query(fn (Builder $query): Builder => $query->where('gender', 'female')),
+                Tables\Filters\Filter::make('is_other')
+                ->label('Others')
+                ->query(fn (Builder $query): Builder => $query->where('gender', 'other')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
