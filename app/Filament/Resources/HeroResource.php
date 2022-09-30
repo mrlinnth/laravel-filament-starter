@@ -72,6 +72,7 @@ class HeroResource extends Resource
                 ->query(fn (Builder $query): Builder => $query->where('gender', 'other')),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -91,6 +92,7 @@ class HeroResource extends Resource
         return [
             'index' => Pages\ListHeroes::route('/'),
             'create' => Pages\CreateHero::route('/create'),
+            'view' => Pages\ViewHero::route('/{record}'),
             'edit' => Pages\EditHero::route('/{record}/edit'),
         ];
     }
