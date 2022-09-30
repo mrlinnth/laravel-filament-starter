@@ -7,6 +7,7 @@ use App\Enums\TraitsEnum;
 use App\Filament\Resources\HeroResource\Pages;
 use App\Filament\Resources\HeroResource\RelationManagers;
 use App\Models\Hero;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -40,7 +41,9 @@ class HeroResource extends Resource
                 ->columns(2),
                 Forms\Components\TextInput::make('age')->numeric(),
                 Forms\Components\ColorPicker::make('eye_color'),
-                Forms\Components\Textarea::make('history')->columnSpan('full'),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('photo')
+                ->collection('hero'),
+                Forms\Components\Textarea::make('history'),
             ]);
     }
 
@@ -48,6 +51,9 @@ class HeroResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('photo')
+                ->collection('hero')
+                ->conversion('thumb'),
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('species')->searchable(),
                 Tables\Columns\TextColumn::make('gender'),
