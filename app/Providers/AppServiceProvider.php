@@ -40,5 +40,9 @@ class AppServiceProvider extends ServiceProvider
                 app(Vite::class)('resources/css/admin.css'),
             );
         });
+
+        Filament::registerStyles([
+            'https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css',
+        ]);
     }
 }
