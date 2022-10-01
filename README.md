@@ -46,4 +46,11 @@
 1. Create seeders and factories
 1. Use enum for species and traits
 1. Update team resource for heroes relationship
-1.
+1. Update hero resource with skill relation manager
+1. Update hero resource with search, sort, filter and toggle columns
+1. Update hero resource with image upload
+
+    - Setup spatie media library
+
+1. Add custom view page for heroes resource
+    - Setup daisyui cdn
