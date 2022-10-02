@@ -31,9 +31,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'remember_token' => Str::random(20),
         ]);
-        // Create super admin role and assign
-        $superAdminRole = Role::create(['name' => 'super_admin']);
-        $superUser->assignRole($superAdminRole);
 
         $this->call([
             TeamSeeder::class,
