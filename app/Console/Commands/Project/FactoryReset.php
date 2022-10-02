@@ -36,6 +36,7 @@ class FactoryReset extends Command
         $logFilePath = storage_path('logs/laravel.log');
         system('truncate -s 0 ' . $logFilePath);
         $this->info('Log file truncated');
+        $this->call('shield:install', ['--fresh'=>true]);
         return Command::SUCCESS;
     }
 }

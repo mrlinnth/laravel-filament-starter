@@ -7,6 +7,7 @@ use App\Enums\TraitsEnum;
 use App\Filament\Resources\HeroResource\Pages;
 use App\Filament\Resources\HeroResource\RelationManagers;
 use App\Models\Hero;
+use App\Settings\HeroSettings;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -25,17 +26,17 @@ class HeroResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $heroSettings = new HeroSettings();
+        $genderOptions = str_replace(', ', ',', $heroSettings->gender_options);
+        $genderOptions = explode(',', $genderOptions);
+        $genderOptions = array_combine($genderOptions, $genderOptions);
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\Select::make('species')
                 ->options(SpeciesEnum::toArray()),
                 Forms\Components\Radio::make('gender')
-                ->options([
-                    'male' => 'Male',
-                    'female' => 'Female',
-                    'other' => 'Other'
-                ]),
+                ->options($genderOptions),
                 Forms\Components\CheckboxList::make('traits')
                 ->options(TraitsEnum::toArray())
                 ->columns(2),
