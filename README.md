@@ -54,3 +54,15 @@
 
 1. Add custom view page for heroes resource
     - Setup daisyui cdn
+
+## Roles and Permissions
+
+1. Install [env indicator filament plugin](https://github.com/pxlrbt/filament-environment-indicator)
+2. Create `super-admin` role and user
+3. Create `project:factory-reset` command
+4. Install [filament shield](https://github.com/bezhanSalleh/filament-shield)
+5. Remove the super-admin role and user assignment from seeder since Sheild provided it
+6. Publish en translation file and change navigation group label
+7. Create filament user resource
+8. Install [filament impersonate](https://github.com/stechstudio/filament-impersonate)
+9. Create setting page for hero
