@@ -8,6 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,13 +24,16 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         // Create first user
-        \App\Models\User::factory()->create([
+        $superUser = \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(20),
         ]);
+        // Create super admin role and assign
+        $superAdminRole = Role::create(['name' => 'super_admin']);
+        $superUser->assignRole($superAdminRole);
 
         $this->call([
             TeamSeeder::class,
