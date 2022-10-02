@@ -12,7 +12,7 @@ class ManageHero extends SettingsPage
 
     protected static string $settings = HeroSettings::class;
 
-    protected static ?string $navigationGroup = 'Project Settings';
+    protected static ?string $navigationGroup = 'Administration';
 
     protected function getFormSchema(): array
     {
