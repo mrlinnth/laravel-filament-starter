@@ -6,6 +6,7 @@ use App\Filament\Resources\TeamResource\Pages;
 use App\Filament\Resources\TeamResource\RelationManagers;
 use App\Models\Team;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -26,6 +27,8 @@ class TeamResource extends Resource
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\Select::make('leader_id')->relationship('leader', 'name'),
                 Forms\Components\RichEditor::make('story')->columnSpan('full'),
+                Forms\Components\MultiSelect::make('heroes')
+                ->relationship('heroes', 'name')
             ]);
     }
 
@@ -37,7 +40,7 @@ class TeamResource extends Resource
                 Tables\Columns\TextColumn::make('leader.name'),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('name'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

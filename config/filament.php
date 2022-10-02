@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'path' => env('FILAMENT_PATH', 'admin'),
+    'path' => env('FILAMENT_PATH', '/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'core_path' => env('FILAMENT_CORE_PATH', 'filament'),
+    'core_path' => env('FILAMENT_CORE_PATH', 'core'),
 
     /*
     |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ return [
             'have_inline_labels' => false,
         ],
         'footer' => [
-            'should_show_logo' => true,
+            'should_show_logo' => false,
         ],
         'max_content_width' => null,
         'notifications' => [
