@@ -35,7 +35,7 @@ class SkillResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('hero.name'),
+                Tables\Columns\TextColumn::make('hero.name')->sortable(),
                 Tables\Columns\TextColumn::make('power'),
             ])
             ->filters([

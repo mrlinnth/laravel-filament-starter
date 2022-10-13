@@ -23,14 +23,56 @@ class HeroPolicy
 
     /**
      * Determine whether the user can view the model.
+     * Notice we've made the $user argument nullable.
+     * This means the method will be called if there is no authenticated user.
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Hero $hero)
+    public function view(?User $user, Hero $hero)
     {
+        if (empty($user)) {
+            return true;
+        }
+
         return $user->can('view_hero');
+    }
+
+    /**
+     * Determine whether the user can view the hero skills
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewSkills(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
+    }
+
+    /**
+     * Determine whether the user can view the teams which the hero is leading
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewLeaderTeams(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
+    }
+
+    /**
+     * Determine whether the user can view the teams which the hero is member
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewTeams(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
     }
 
     /**
@@ -147,5 +189,4 @@ class HeroPolicy
     {
         return $user->can('reorder_hero');
     }
-
 }

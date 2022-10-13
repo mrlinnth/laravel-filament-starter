@@ -10,6 +10,13 @@ class Team extends Model
     use HasFactory;
 
     /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * The heroes that belong to the team.
      */
     public function heroes()
