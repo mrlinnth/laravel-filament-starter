@@ -1,28 +1,26 @@
 <?php
 
-namespace App\JsonApi\V1\Heroes;
+namespace App\JsonApi\V1\Teams;
 
-use App\Models\Hero;
+use App\Models\Team;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
-use LaravelJsonApi\Eloquent\Fields\ArrayList;
 use LaravelJsonApi\Eloquent\Fields\DateTime;
 use LaravelJsonApi\Eloquent\Fields\ID;
-use LaravelJsonApi\Eloquent\Fields\Str;
-use LaravelJsonApi\Eloquent\Fields\Number;
+use LaravelJsonApi\Eloquent\Fields\Relations\BelongsTo;
 use LaravelJsonApi\Eloquent\Fields\Relations\BelongsToMany;
-use LaravelJsonApi\Eloquent\Fields\Relations\HasMany;
+use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
 
-class HeroSchema extends Schema
+class TeamSchema extends Schema
 {
     /**
      * The model the schema corresponds to.
      *
      * @var string
      */
-    public static string $model = Hero::class;
+    public static string $model = Team::class;
 
     /**
      * Get the resource fields.
@@ -33,16 +31,11 @@ class HeroSchema extends Schema
     {
         return [
             ID::make(),
-            Str::make('name')->sortable(),
-            Str::make('history'),
-            Str::make('species'),
-            Str::make('gender'),
-            Number::make('age')->sortable(),
-            Str::make('eyeColor'),
-            ArrayList::make('traits'),
-            HasMany::make('skills')->readOnly(),
-            HasMany::make('leaderTeams')->type('teams')->readOnly(),
-            BelongsToMany::make('teams')->readOnly(),
+            Str::make('name'),
+            Str::make('name')->on('leader'),
+            Str::make('story'),
+            BelongsTo::make('leader')->readOnly(),
+            BelongsToMany::make('heroes')->readOnly(),
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),
         ];

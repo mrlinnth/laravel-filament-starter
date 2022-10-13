@@ -21,5 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 JsonApiRoute::server('v1')->prefix('v1')->resources(function ($server) {
-    $server->resource('heroes', JsonApiController::class)->readOnly();
+    $server->resource('heroes', JsonApiController::class)
+    ->readOnly()
+    ->relationships(function ($relations) {
+        $relations->hasMany('skills')->readOnly();
+        $relations->hasMany('leaderTeams')->readOnly();
+        $relations->hasMany('teams')->readOnly();
+    });
 });

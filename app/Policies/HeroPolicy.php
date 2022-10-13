@@ -40,6 +40,42 @@ class HeroPolicy
     }
 
     /**
+     * Determine whether the user can view the hero skills
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewSkills(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
+    }
+
+    /**
+     * Determine whether the user can view the teams which the hero is leading
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewLeaderTeams(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
+    }
+
+    /**
+     * Determine whether the user can view the teams which the hero is member
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Hero  $hero
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function viewTeams(?User $user, Hero $hero)
+    {
+        return $this->view($user, $hero);
+    }
+
+    /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user

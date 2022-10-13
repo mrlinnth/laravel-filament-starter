@@ -3,6 +3,8 @@
 namespace App\JsonApi\V1;
 
 use App\JsonApi\V1\Heroes\HeroSchema;
+use App\JsonApi\V1\Skills\SkillSchema;
+use App\JsonApi\V1\Teams\TeamSchema;
 use LaravelJsonApi\Core\Server\Server as BaseServer;
 
 class Server extends BaseServer
@@ -33,6 +35,8 @@ class Server extends BaseServer
     {
         return [
             HeroSchema::class,
+            SkillSchema::class,
+            TeamSchema::class,
         ];
     }
 }
