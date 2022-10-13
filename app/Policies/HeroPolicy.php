@@ -23,13 +23,19 @@ class HeroPolicy
 
     /**
      * Determine whether the user can view the model.
+     * Notice we've made the $user argument nullable.
+     * This means the method will be called if there is no authenticated user.
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Hero  $hero
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Hero $hero)
+    public function view(?User $user, Hero $hero)
     {
+        if (empty($user)) {
+            return true;
+        }
+
         return $user->can('view_hero');
     }
 
@@ -147,5 +153,4 @@ class HeroPolicy
     {
         return $user->can('reorder_hero');
     }
-
 }
