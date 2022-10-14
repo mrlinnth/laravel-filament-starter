@@ -26,6 +26,7 @@
 22. Run migrate
 23. Create filament user
 24. Uninstall module package
+25. Run `npm run build`
 
 ## First CRUD
 
@@ -65,4 +66,24 @@
 6. Publish en translation file and change navigation group label
 7. Create filament user resource
 8. Install [filament impersonate](https://github.com/stechstudio/filament-impersonate)
-9. Create setting page for hero
+9. Install [filament breezy](https://github.com/jeffgreco13/filament-breezy)
+10. Create setting page for hero
+11. Update hero resource table with filter, sort and search
+
+## JSON API
+
+1. Update [Exception Handler](https://laraveljsonapi.io/docs/2.0/tutorial/03-server-and-schemas.html#exception-handler)
+2. Create API server `php artisan jsonapi:server v1`
+3. Update servers array in `jsonapi.php` config with above server class
+4. Create API schema for heroes `php artisan jsonapi:schema heroes`
+5. Update `allSchemas()` method in `Server.php` with Hero schema
+6. Update hero attributes in `HeroSchema.php` class `fields()` method
+7. Update `api.php` with Json API server v1 route
+8. Create or update `HeroPolicy.php` class
+9. Add has many skills relationship to hero schema
+10. Create skills schema `php artisan jsonapi:schema skills`
+11. Create teams schema `php artisan jsonapi:schema teams`
+12. Update skill and team schema
+13. Update `allSchemas()` method in `Server.php`
+14. Update `api.php` with `relationships()`
+15. Either `hasOne` or `hasMany` available
