@@ -29,7 +29,8 @@
         "spatie/laravel-activitylog": "^4.6",
         "spatie/laravel-enum": "^3.0",
         "spatie/laravel-permission": "^5.5",
-        "stechstudio/filament-impersonate": "^2.6"
+        "stechstudio/filament-impersonate": "^2.6",
+        "z3d0x/filament-fabricator": "^0.1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

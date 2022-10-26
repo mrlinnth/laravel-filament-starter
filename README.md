@@ -87,3 +87,5 @@
 13. Update `allSchemas()` method in `Server.php`
 14. Update `api.php` with `relationships()`
 15. Either `hasOne` or `hasMany` available
+
+Install [filament fabricator](https://filamentphp.com/plugins/fabricator)
