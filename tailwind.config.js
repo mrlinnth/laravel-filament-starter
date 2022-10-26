@@ -1,50 +1,30 @@
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors');
 
 const projectColors = {
-    primary: "#C70074",
-    secondary: "#BFA8FF",
-    accent: "#FF9AE6",
-    neutral: "#9A7F9D",
-    info: "#6EADFF",
-    success: "#23BEB6",
-    warning: "#FFCB51",
-    error: "#DE0042",
-    "base-100": "#FFFFFF"
+    primary: '#a991f7',
+    secondary: '#f6d860',
+    accent: '#37cdbe',
+    neutral: '#3d4451',
+    'base-100': '#ffffff',
 };
 
 module.exports = {
-    content: [
-        "./resources/**/*.blade.php",
-        "./resources/**/*.{js,ts,jsx,tsx}",
-        "./vendor/filament/**/*.blade.php",
-    ],
-    darkMode: "class",
+    content: ['./resources/**/*.blade.php', './resources/**/*.{js,ts,jsx,tsx}', './vendor/filament/**/*.blade.php'],
+    darkMode: 'class',
     theme: {
         extend: {
             colors: {
-                pink: projectColors.primary,
-                red: projectColors.error,
-                teal: projectColors.success,
-                amber: projectColors.secondary,
-                danger: colors.red,
-                primary: colors.pink,
-                success: colors.teal,
-                warning: colors.amber,
+                primary: projectColors.primary,
             },
         },
     },
-    plugins: [
-        require("@tailwindcss/forms"),
-        require("@tailwindcss/typography"),
-        require('daisyui')
-    ],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('daisyui')],
     daisyui: {
         themes: [
             {
-                servd: projectColors,
+                custom: projectColors,
             },
-            "light",
-            'acid',
+            'light',
         ],
     },
 };
